@@ -3,6 +3,7 @@ import os
 import re
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit, urlunsplit
 from typing import Any, Dict, List, Optional
 
 from dotenv import load_dotenv
@@ -148,6 +149,31 @@ PROVIDER_FALLBACKS = {
 }
 
 
+def _normalize_chat_endpoint(provider: str, base_url: str) -> str:
+    endpoint = (base_url or "").strip()
+    if not endpoint:
+        return ""
+
+    parsed = urlsplit(endpoint)
+    path = parsed.path.rstrip("/")
+    if path.endswith("/chat/completions"):
+        normalized_path = path
+    elif provider == "openai" and path in {"", "/"}:
+        normalized_path = "/v1/chat/completions"
+    else:
+        normalized_path = f"{path}/chat/completions" if path else "/chat/completions"
+
+    return urlunsplit(
+        (
+            parsed.scheme,
+            parsed.netloc,
+            normalized_path,
+            parsed.query,
+            parsed.fragment,
+        )
+    )
+
+
 def _get_default_db_ai_config() -> Optional[Dict[str, Any]]:
     try:
         from app.database import SessionLocal
@@ -178,9 +204,13 @@ def _get_default_db_ai_config() -> Optional[Dict[str, Any]]:
 def _config_from_provider_config(config_data: Dict[str, Any]) -> Dict[str, Any]:
     provider = (config_data.get("provider") or "").strip().lower()
     fallback = PROVIDER_FALLBACKS.get(provider, PROVIDER_FALLBACKS["deepseek"])
+    endpoint = _normalize_chat_endpoint(
+        provider,
+        config_data.get("base_url") or fallback["endpoint"] or "",
+    )
     return {
         "provider": provider or "deepseek",
-        "endpoint": (config_data.get("base_url") or fallback["endpoint"] or "").strip(),
+        "endpoint": endpoint,
         "api_key_env": fallback["api_key_env"],
         "api_key": config_data.get("api_key"),
         "model": (config_data.get("model_name") or fallback["model"] or "auto").strip(),
