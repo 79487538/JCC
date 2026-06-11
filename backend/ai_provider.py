@@ -22,6 +22,9 @@ def is_ai_recommendation_enabled() -> bool:
 
 
 def get_default_ai_provider() -> str:
+    db_config = _get_default_db_ai_config()
+    if db_config:
+        return db_config["provider"]
     return os.getenv("DEFAULT_AI_PROVIDER", "auto").strip().lower() or "auto"
 
 
@@ -100,6 +103,89 @@ def _model_configs() -> Dict[str, Dict[str, Any]]:
             "input_per_1m": 0.50,
             "output_per_1m": 1.50,
         },
+    }
+
+
+PROVIDER_FALLBACKS = {
+    "deepseek": {
+        "endpoint": os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com/chat/completions"),
+        "api_key_env": "DEEPSEEK_API_KEY",
+        "model": os.getenv("DEEPSEEK_FLASH_MODEL", "deepseek-v4-flash"),
+        "input_per_1m": 0.28,
+        "output_per_1m": 0.42,
+    },
+    "qwen": {
+        "endpoint": os.getenv(
+            "QWEN_BASE_URL",
+            "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+        ),
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "model": os.getenv("QWEN_PLUS_MODEL", "qwen-plus"),
+        "input_per_1m": 0.30,
+        "output_per_1m": 0.90,
+    },
+    "openai": {
+        "endpoint": os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1/chat/completions"),
+        "api_key_env": "OPENAI_API_KEY",
+        "model": os.getenv("OPENAI_MINI_MODEL", "gpt-4o-mini"),
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.60,
+    },
+    "apirouter": {
+        "endpoint": os.getenv("APIROUTER_BASE_URL", "https://openrouter.ai/api/v1/chat/completions"),
+        "api_key_env": "APIROUTER_API_KEY",
+        "model": os.getenv("APIROUTER_MODEL", "openai/gpt-4o-mini"),
+        "input_per_1m": 0.50,
+        "output_per_1m": 1.50,
+    },
+    "aipower": {
+        "endpoint": os.getenv("AIPOWER_BASE_URL", ""),
+        "api_key_env": "AIPOWER_API_KEY",
+        "model": os.getenv("AIPOWER_MODEL", "auto"),
+        "input_per_1m": 0.50,
+        "output_per_1m": 1.50,
+    },
+}
+
+
+def _get_default_db_ai_config() -> Optional[Dict[str, Any]]:
+    try:
+        from app.database import SessionLocal
+        from app.models import AIConfig
+
+        db = SessionLocal()
+        try:
+            config = (
+                db.query(AIConfig)
+                .filter(AIConfig.enabled.is_(True), AIConfig.is_default.is_(True))
+                .order_by(AIConfig.updated_at.desc(), AIConfig.id.desc())
+                .first()
+            )
+            if not config:
+                return None
+            return {
+                "provider": config.provider,
+                "model_name": config.model_name,
+                "api_key": config.api_key,
+                "base_url": config.base_url,
+            }
+        finally:
+            db.close()
+    except Exception:
+        return None
+
+
+def _config_from_provider_config(config_data: Dict[str, Any]) -> Dict[str, Any]:
+    provider = (config_data.get("provider") or "").strip().lower()
+    fallback = PROVIDER_FALLBACKS.get(provider, PROVIDER_FALLBACKS["deepseek"])
+    return {
+        "provider": provider or "deepseek",
+        "endpoint": (config_data.get("base_url") or fallback["endpoint"] or "").strip(),
+        "api_key_env": fallback["api_key_env"],
+        "api_key": config_data.get("api_key"),
+        "model": (config_data.get("model_name") or fallback["model"] or "auto").strip(),
+        "input_per_1m": fallback["input_per_1m"],
+        "output_per_1m": fallback["output_per_1m"],
     }
 
 
@@ -207,7 +293,7 @@ def parse_ai_json(content: str) -> Dict[str, Any]:
 
 
 def _post_chat_completion(config: Dict[str, Any], input_data: Any, max_tokens: int) -> Dict[str, Any]:
-    api_key = os.getenv(config["api_key_env"])
+    api_key = config.get("api_key") or os.getenv(config["api_key_env"])
     endpoint = config["endpoint"]
 
     if not api_key:
@@ -253,11 +339,16 @@ def _post_chat_completion(config: Dict[str, Any], input_data: Any, max_tokens: i
 
 def call_ai_model(model_name, input, output_estimate=True):
     configs = _model_configs()
-    selected_model = _normalize_model_name(model_name)
-    config = configs.get(selected_model)
-    if not config:
-        selected_model = "deepseek-v4-flash"
-        config = configs[selected_model]
+    db_config = _get_default_db_ai_config()
+    if db_config:
+        selected_model = f"db:{db_config['provider']}"
+        config = _config_from_provider_config(db_config)
+    else:
+        selected_model = _normalize_model_name(model_name)
+        config = configs.get(selected_model)
+        if not config:
+            selected_model = "deepseek-v4-flash"
+            config = configs[selected_model]
 
     prompt_tokens = _estimate_tokens(input)
     output_tokens = DEFAULT_OUTPUT_TOKENS if output_estimate is True else int(output_estimate or 0)
@@ -292,4 +383,56 @@ def call_ai_model(model_name, input, output_estimate=True):
         "success",
         None,
         completion["content"],
+    )
+
+
+def test_ai_config(config_data: Dict[str, Any]) -> Dict[str, Any]:
+    config = _config_from_provider_config(config_data)
+    prompt_tokens = _estimate_tokens("ping")
+    output_tokens = 32
+    selected_model = f"test:{config['provider']}"
+
+    if not config.get("api_key"):
+        return _base_result(
+            config,
+            selected_model,
+            prompt_tokens,
+            output_tokens,
+            "failed",
+            "missing api_key",
+        )
+    if not config.get("endpoint"):
+        return _base_result(
+            config,
+            selected_model,
+            prompt_tokens,
+            output_tokens,
+            "failed",
+            "missing base_url",
+        )
+
+    try:
+        _post_chat_completion(
+            config,
+            {"task": "Return a short JSON ping response.", "output": {"ok": True}},
+            max_tokens=32,
+        )
+    except Exception as exc:
+        return _base_result(
+            config,
+            selected_model,
+            prompt_tokens,
+            output_tokens,
+            "failed",
+            str(exc),
+        )
+
+    return _base_result(
+        config,
+        selected_model,
+        prompt_tokens,
+        output_tokens,
+        "success",
+        None,
+        "{}",
     )

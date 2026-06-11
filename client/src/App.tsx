@@ -4,7 +4,7 @@ import type { AnalyzeResponse, GameState } from "./types";
 
 type View = "login" | "license" | "analyze" | "screenshot" | "results" | "settings";
 
-const defaultBackendUrl = "http://127.0.0.1:8000";
+const defaultBackendUrl = "http://1.12.73.114:8000";
 
 const defaultGameState: GameState = {
   level: 6,

@@ -40,7 +40,7 @@ The app only performs screenshot recognition and recommendation display. It does
 The default backend address is:
 
 ```text
-http://127.0.0.1:8000
+http://1.12.73.114:8000
 ```
 
 Users can change the backend address in the Settings page.

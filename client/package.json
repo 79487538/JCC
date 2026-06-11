@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "electron:dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
-    "dist:win": "npm run build && electron-builder --win --x64"
+    "dist:win": "electron-builder --win nsis --x64"
   },
   "build": {
     "appId": "com.jcc.s17.ai.assistant",
@@ -20,6 +20,8 @@
     "files": [
       "dist/**/*",
       "electron/**/*",
+      "node_modules/tesseract.js/**/*",
+      "node_modules/tesseract.js-core/**/*",
       "package.json"
     ],
     "asar": true,
@@ -45,7 +47,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
-    "electron": "^33.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tesseract.js": "^6.0.1",
@@ -57,6 +58,7 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "electron": "^33.2.1",
     "electron-builder": "^25.1.8"
   }
 }

@@ -1,9 +1,14 @@
 import json
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter
+import jwt
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
+from app.database import get_db
+from app.models import AIUsageLog
+from app.utils import ALGORITHM, SECRET_KEY
 from ai_provider import call_ai_model, get_default_ai_provider, parse_ai_json
 
 router = APIRouter(prefix="/api/game")
@@ -24,6 +29,8 @@ class GameAnalyzeRequest(BaseModel):
     preferred_model: Optional[str] = "auto"
     streak: Optional[int] = None
     streak_type: Optional[str] = None
+    token: Optional[str] = None
+    license_key: Optional[str] = None
 
 
 S17_CORE_HEROES = {
@@ -271,8 +278,40 @@ def build_ai_input(payload: GameAnalyzeRequest, rule_recommendations: List[Dict[
     }
 
 
+def get_user_id_from_token(token: Optional[str]):
+    if not token:
+        return None
+    try:
+        token_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return int(token_data.get("sub"))
+    except (jwt.PyJWTError, TypeError, ValueError):
+        return None
+
+
+def write_ai_usage_log(
+    db: Session,
+    payload: GameAnalyzeRequest,
+    model_used: str,
+    estimated_cost_usd: float,
+    ai_status: str,
+):
+    try:
+        db.add(
+            AIUsageLog(
+                user_id=get_user_id_from_token(payload.token),
+                license_key=payload.license_key,
+                model_used=model_used,
+                estimated_cost_usd=estimated_cost_usd or 0,
+                ai_status=ai_status,
+            )
+        )
+        db.commit()
+    except Exception:
+        db.rollback()
+
+
 @router.post("/analyze")
-def analyze_game(payload: GameAnalyzeRequest):
+def analyze_game(payload: GameAnalyzeRequest, db: Session = Depends(get_db)):
     rule_recommendations = build_rule_recommendations(payload)
     selected_model = select_model(payload)
     ai_result = call_ai_model(
@@ -296,6 +335,14 @@ def analyze_game(payload: GameAnalyzeRequest):
         except (json.JSONDecodeError, TypeError, ValueError) as exc:
             ai_status = "failed"
             ai_error = f"invalid AI JSON response: {exc}"
+
+    write_ai_usage_log(
+        db,
+        payload,
+        ai_result["model_used"],
+        ai_result["cost_estimate_usd"],
+        ai_status,
+    )
 
     return {
         "status": "ok",
