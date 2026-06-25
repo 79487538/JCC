@@ -1,0 +1,14 @@
+{
+  "S": {
+    "description": "版本强势阵容",
+    "win_rate_weight": 1.2
+  },
+  "A": {
+    "description": "可用阵容",
+    "win_rate_weight": 1.0
+  },
+  "B": {
+    "description": "过渡阵容",
+    "win_rate_weight": 0.8
+  }
+}

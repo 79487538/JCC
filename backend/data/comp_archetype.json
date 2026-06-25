@@ -1,0 +1,37 @@
+{
+  "卡莎体系": {
+    "type": "后期主C",
+    "strength_curve": "mid -> late",
+    "core_units": ["卡莎", "慎", "瑟庄妮"],
+    "win_condition": "卡莎3件核心装 + 2名前排承伤 + 挑战者/星神羁绊成型",
+    "tier": "S"
+  },
+  "挑战者体系": {
+    "type": "攻速压制",
+    "strength_curve": "mid -> late",
+    "core_units": ["卡莎"],
+    "win_condition": "挑战者达到4/6档并保证主C安全输出",
+    "tier": "S"
+  },
+  "堡垒体系": {
+    "type": "前排运营",
+    "strength_curve": "early -> mid",
+    "core_units": ["慎", "盖伦", "瑟庄妮"],
+    "win_condition": "高坦度前排拖住战斗并搭配后排主C补足输出",
+    "tier": "A"
+  },
+  "神谕体系": {
+    "type": "技能循环",
+    "strength_curve": "mid -> late",
+    "core_units": ["阿狸", "琴女", "慎"],
+    "win_condition": "神谕羁绊成型并给核心单位提供启动装",
+    "tier": "A"
+  },
+  "过渡阵容": {
+    "type": "运营过渡",
+    "strength_curve": "early -> mid",
+    "core_units": ["盖伦", "慎"],
+    "win_condition": "保持血量和经济，尽快转向A/S级阵容",
+    "tier": "B"
+  }
+}

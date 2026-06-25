@@ -1,0 +1,38 @@
+{
+  "version": "1.0.1",
+  "last_update": "2026-06-23T06:08:42.767162+00:00",
+  "changes": [
+    {
+      "timestamp": "2026-06-23T06:08:42.767162+00:00",
+      "version": "1.0.1",
+      "diff": {
+        "champions": {
+          "added": [],
+          "removed": [],
+          "modified": []
+        },
+        "traits": {
+          "added": [],
+          "removed": [],
+          "modified": []
+        },
+        "items": {
+          "added": [],
+          "removed": [],
+          "modified": []
+        },
+        "meta_tier": {
+          "added": [],
+          "removed": [],
+          "modified": []
+        }
+      },
+      "backup_paths": [
+        "D:\\JCC\\backend\\data\\backups\\20260623T060842Z_champions.json",
+        "D:\\JCC\\backend\\data\\backups\\20260623T060842Z_traits.json",
+        "D:\\JCC\\backend\\data\\backups\\20260623T060842Z_items.json",
+        "D:\\JCC\\backend\\data\\backups\\20260623T060842Z_meta_tier.json"
+      ]
+    }
+  ]
+}

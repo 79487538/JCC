@@ -1,0 +1,350 @@
+{
+  "version_hash": "91631dde1d431424",
+  "last_stable_data": {
+    "champions": [
+      {
+        "name": "卡莎",
+        "cost": 4,
+        "tier": "S",
+        "source": "cached_meta"
+      }
+    ],
+    "traits": [
+      {
+        "name": "挑战者",
+        "tier": "S",
+        "source": "cached_meta"
+      }
+    ],
+    "items": [
+      {
+        "name": "GuinsoosRageblade",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "无尽之刃",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Deathblade",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "GargoyleStoneplate",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "FrozenHeart",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Crownguard",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "WarmogsArmor",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Redemption",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "RunaansHurricane",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "MadredsBloodrazor",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "LastWhisper",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "BrambleVest",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "RapidFireCannon",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "RedBuff",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_EkkoOffering_AnomalyItem",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "AdaptiveHelm",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "PowerGauntlet",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "SpectralGauntlet",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "NightHarvester",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "DragonsClaw",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "9CrownOfDemacia",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "珠光护手",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "RabadonsDeathcap",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "SpearOfShojin",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Morellonomicon",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17AstronautEmblemItem",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "StatikkShiv",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "5DeathbladeRadiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17Artifact_YasuoArtifact",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17Artifact_SorakaArtifact",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "BlueBuff",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_Fishbones",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_NavoriFlickerblades",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "7ShimmerscaleGamblersBlade",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Leviathan",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "UnstableConcoction",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "ArchangelsStaff",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_TheIndomitable",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_SympatheticImplantMod_Radiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "GuardianAngel",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "IonicSpark",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_ChemicalCapacitorMod_Radiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_SympatheticImplantMod",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_TargetlockMod_Radiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_DroneMod_Radiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Quicksilver",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Bloodthirster",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_DroneMod",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_GrenadeMod",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TitansResolve",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "SteraksGage",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17HPTankEmblemItem",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_GrenadeMod_Radiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_TargetlockMod",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17PsyOps_ChemicalCapacitorMod",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "5HandOfJusticeRadiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_IceblastArmor",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_RadiantField",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_LionessLament",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_SearingShortbow",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_Annihilator",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17Artifact_AhriArtifact",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "5GargoyleStoneplateRadiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "HextechGunblade",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "5RabadonsDeathcapRadiant",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_SilvermereDawn",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier1_TentacleSlam",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17Artifact_VarusArtifact",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier1_GuidingHex",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "9OrnnHullbreaker",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_EternalPact",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_BlightingJewel",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "Artifact_LightshieldCrest",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "TFT17_AnimaSquadItem_Tier2_CyclonicSlicers",
+        "source": "TacticsTools"
+      },
+      {
+        "name": "17DarkStarEmblemItem",
+        "source": "TacticsTools"
+      }
+    ],
+    "meta": [
+      {
+        "comp": "卡莎体系",
+        "tier": "S",
+        "source": "cached_meta"
+      },
+      {
+        "comp": "挑战者体系",
+        "tier": "S",
+        "source": "cached_meta"
+      }
+    ]
+  },
+  "source_scores": {
+    "metatft": 0,
+    "tactics": 100,
+    "datatft": 0
+  },
+  "failure_counts": {
+    "metatft": 4,
+    "tactics": 0,
+    "datatft": 4
+  },
+  "mismatch_rates": {
+    "metatft": 0,
+    "tactics": 0.0,
+    "datatft": 0
+  },
+  "selected_source": "tactics"
+}

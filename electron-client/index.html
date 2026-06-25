@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金铲铲 AI 推荐</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="toolbar">
+        <div>
+          <h1>金铲铲 AI 推荐</h1>
+          <p id="status">后端地址：由部署配置读取</p>
+        </div>
+        <button id="analyze-button" type="button">开始对局分析</button>
+      </section>
+
+      <div id="error-box" class="error-box" hidden></div>
+
+      <section class="result-panel" aria-live="polite">
+        <div class="field">
+          <span>① 当前阶段</span>
+          <strong id="stage">-</strong>
+        </div>
+        <div class="field">
+          <span>② 当前强度</span>
+          <strong id="game-strength">-</strong>
+        </div>
+        <div class="field field-wide">
+          <span>③ 推荐策略</span>
+          <strong id="strategy">-</strong>
+        </div>
+        <div class="field field-wide">
+          <span>④ 优先级</span>
+          <strong id="priority">-</strong>
+        </div>
+        <div class="field field-wide">
+          <span>⑤ 策略评分</span>
+          <strong id="strategy-score">-</strong>
+        </div>
+        <div id="learning-signal" class="signal signal-neutral field-wide">
+          等待分析结果
+        </div>
+        <div class="field field-wide">
+          <span>局势说明</span>
+          <p id="explanation">-</p>
+        </div>
+      </section>
+
+      <section class="feedback-panel">
+        <span>这次推荐有帮助吗？</span>
+        <div class="feedback-actions">
+          <button id="feedback-useful" class="feedback-button" type="button" disabled>
+            👍 有用
+          </button>
+          <button id="feedback-not-useful" class="feedback-button secondary" type="button" disabled>
+            👎 没用
+          </button>
+        </div>
+        <p id="feedback-status">完成一次分析后可以提交反馈</p>
+      </section>
+
+      <details class="decision-log">
+        <summary>查看 decision_log</summary>
+        <pre id="decision-log">-</pre>
+      </details>
+    </main>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

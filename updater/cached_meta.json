@@ -1,0 +1,36 @@
+{
+  "champions": [
+    {
+      "name": "卡莎",
+      "cost": 4,
+      "tier": "S",
+      "source": "cached_meta"
+    }
+  ],
+  "traits": [
+    {
+      "name": "挑战者",
+      "tier": "S",
+      "source": "cached_meta"
+    }
+  ],
+  "items": [
+    {
+      "name": "无尽之刃",
+      "tier": "S",
+      "source": "cached_meta"
+    }
+  ],
+  "meta": [
+    {
+      "comp": "卡莎体系",
+      "tier": "S",
+      "source": "cached_meta"
+    },
+    {
+      "comp": "挑战者体系",
+      "tier": "S",
+      "source": "cached_meta"
+    }
+  ]
+}

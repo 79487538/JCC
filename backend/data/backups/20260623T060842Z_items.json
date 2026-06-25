@@ -1,0 +1,93 @@
+{
+  "无尽之刃": {
+    "components": ["大剑", "拳套"],
+    "tier": "S",
+    "best_users": ["卡莎"],
+    "bad_users": ["慎", "盖伦"],
+    "carry_type_match": ["物理"],
+    "situation_priority": {
+      "early": 65,
+      "mid": 85,
+      "late": 92
+    },
+    "replacement_items": ["巨人杀手", "最后的轻语"]
+  },
+  "巨人杀手": {
+    "components": ["大剑", "反曲弓"],
+    "tier": "A",
+    "best_users": ["卡莎", "阿狸"],
+    "bad_users": ["慎", "盖伦"],
+    "carry_type_match": ["物理", "法系"],
+    "situation_priority": {
+      "early": 55,
+      "mid": 78,
+      "late": 88
+    },
+    "replacement_items": ["无尽之刃", "珠光护手"]
+  },
+  "蓝霸符": {
+    "components": ["眼泪", "眼泪"],
+    "tier": "S",
+    "best_users": ["阿狸", "琴女"],
+    "bad_users": ["慎", "盖伦"],
+    "carry_type_match": ["法系", "功能"],
+    "situation_priority": {
+      "early": 50,
+      "mid": 82,
+      "late": 90
+    },
+    "replacement_items": ["朔极之矛", "适应性头盔"]
+  },
+  "珠光护手": {
+    "components": ["大棒", "拳套"],
+    "tier": "A",
+    "best_users": ["阿狸"],
+    "bad_users": ["慎", "瑟庄妮"],
+    "carry_type_match": ["法系"],
+    "situation_priority": {
+      "early": 50,
+      "mid": 80,
+      "late": 88
+    },
+    "replacement_items": ["巨人杀手", "帽子"]
+  },
+  "狂徒铠甲": {
+    "components": ["腰带", "腰带"],
+    "tier": "A",
+    "best_users": ["慎", "盖伦", "瑟庄妮"],
+    "bad_users": ["卡莎", "阿狸"],
+    "carry_type_match": ["坦克"],
+    "situation_priority": {
+      "early": 82,
+      "mid": 75,
+      "late": 65
+    },
+    "replacement_items": ["石像鬼石板甲", "救赎"]
+  },
+  "石像鬼石板甲": {
+    "components": ["锁子甲", "斗篷"],
+    "tier": "S",
+    "best_users": ["慎", "瑟庄妮"],
+    "bad_users": ["卡莎", "阿狸"],
+    "carry_type_match": ["坦克"],
+    "situation_priority": {
+      "early": 70,
+      "mid": 84,
+      "late": 86
+    },
+    "replacement_items": ["狂徒铠甲", "救赎"]
+  },
+  "救赎": {
+    "components": ["眼泪", "腰带"],
+    "tier": "A",
+    "best_users": ["慎", "琴女", "瑟庄妮"],
+    "bad_users": ["卡莎"],
+    "carry_type_match": ["坦克", "功能"],
+    "situation_priority": {
+      "early": 68,
+      "mid": 78,
+      "late": 74
+    },
+    "replacement_items": ["狂徒铠甲", "适应性头盔"]
+  }
+}

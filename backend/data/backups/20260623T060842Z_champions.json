@@ -1,0 +1,98 @@
+[
+  {
+    "name": "卡莎",
+    "cost": 4,
+    "traits": ["挑战者", "星神"],
+    "role": "主C",
+    "tier": "S",
+    "stage_power": {
+      "early": 25,
+      "mid": 82,
+      "late": 92
+    },
+    "carry_type": "物理",
+    "recommended_items": ["无尽之刃", "巨人杀手", "羊刀"],
+    "power_spike_level": "8",
+    "synergy_notes": "适合作为后期主C，依赖攻速和暴击装备，需要前排争取输出时间。"
+  },
+  {
+    "name": "慎",
+    "cost": 2,
+    "traits": ["堡垒", "神谕"],
+    "role": "前排",
+    "tier": "A",
+    "stage_power": {
+      "early": 75,
+      "mid": 68,
+      "late": 45
+    },
+    "carry_type": "坦克",
+    "recommended_items": ["狂徒铠甲", "石像鬼石板甲", "救赎"],
+    "power_spike_level": "5",
+    "synergy_notes": "适合作为前中期承伤单位，能支撑后排输出，但后期需要替换或升星补质量。"
+  },
+  {
+    "name": "阿狸",
+    "cost": 4,
+    "traits": ["神谕", "法师"],
+    "role": "副C",
+    "tier": "A",
+    "stage_power": {
+      "early": 20,
+      "mid": 76,
+      "late": 88
+    },
+    "carry_type": "法系",
+    "recommended_items": ["蓝霸符", "珠光护手", "巨人杀手"],
+    "power_spike_level": "8",
+    "synergy_notes": "适合作为法系副C或主C补充，依赖启动装和法强装，神谕体系中价值更高。"
+  },
+  {
+    "name": "盖伦",
+    "cost": 1,
+    "traits": ["堡垒"],
+    "role": "前排",
+    "tier": "B",
+    "stage_power": {
+      "early": 70,
+      "mid": 45,
+      "late": 25
+    },
+    "carry_type": "坦克",
+    "recommended_items": ["狂徒铠甲", "救赎"],
+    "power_spike_level": "3",
+    "synergy_notes": "低费过渡前排，适合前期稳血，后期通常作为羁绊挂件或被高费前排替换。"
+  },
+  {
+    "name": "琴女",
+    "cost": 3,
+    "traits": ["神谕"],
+    "role": "功能",
+    "tier": "B",
+    "stage_power": {
+      "early": 35,
+      "mid": 70,
+      "late": 62
+    },
+    "carry_type": "功能",
+    "recommended_items": ["蓝霸符", "救赎"],
+    "power_spike_level": "7",
+    "synergy_notes": "提供团队功能和神谕拼图，适合中期补充阵容节奏。"
+  },
+  {
+    "name": "瑟庄妮",
+    "cost": 4,
+    "traits": ["堡垒", "控制"],
+    "role": "控制",
+    "tier": "A",
+    "stage_power": {
+      "early": 20,
+      "mid": 78,
+      "late": 84
+    },
+    "carry_type": "坦克",
+    "recommended_items": ["石像鬼石板甲", "狂徒铠甲", "救赎"],
+    "power_spike_level": "8",
+    "synergy_notes": "高费控制前排，适合保护后排核心并提升后期团战稳定性。"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "挑战者": {
+    "breakpoints": [2, 4, 6, 8],
+    "type": "战斗",
+    "stage_strength": {
+      "early": 45,
+      "mid": 82,
+      "late": 90
+    },
+    "core_carry_traits": ["卡莎"],
+    "win_condition": "围绕高攻速主C快速清场，需要稳定前排和至少2件输出装。",
+    "weakness": "害怕控制和前排不足，主C未成型时中期容易掉血。"
+  },
+  "星神": {
+    "breakpoints": [2, 4, 6, 8],
+    "type": "战斗",
+    "stage_strength": {
+      "early": 35,
+      "mid": 68,
+      "late": 86
+    },
+    "core_carry_traits": ["卡莎"],
+    "win_condition": "通过回复和持续输出打长线团战，适合搭配高输出核心。",
+    "weakness": "爆发不足时容易被高伤阵容快速突破。"
+  },
+  "堡垒": {
+    "breakpoints": [2, 4, 6, 8],
+    "type": "战斗",
+    "stage_strength": {
+      "early": 82,
+      "mid": 74,
+      "late": 66
+    },
+    "core_carry_traits": ["慎", "瑟庄妮"],
+    "win_condition": "用高坦度前排拖时间，让后排核心完成输出。",
+    "weakness": "缺少后排输出时只能抗不能赢，后期需要补主C质量。"
+  },
+  "神谕": {
+    "breakpoints": [2, 4, 6, 8],
+    "type": "运营",
+    "stage_strength": {
+      "early": 50,
+      "mid": 72,
+      "late": 88
+    },
+    "core_carry_traits": ["阿狸", "琴女"],
+    "win_condition": "通过技能启动和持续施法积累优势，适合搭配法系或功能单位。",
+    "weakness": "前排不足或启动装不足时输出节奏慢。"
+  },
+  "法师": {
+    "breakpoints": [2, 4, 6, 8],
+    "type": "战斗",
+    "stage_strength": {
+      "early": 40,
+      "mid": 76,
+      "late": 86
+    },
+    "core_carry_traits": ["阿狸"],
+    "win_condition": "依靠法系爆发压低敌方血线，需要法强装和启动装。",
+    "weakness": "害怕魔抗、刺客切入和控制打断。"
+  },
+  "控制": {
+    "breakpoints": [1, 2, 3, 4],
+    "type": "混合",
+    "stage_strength": {
+      "early": 35,
+      "mid": 72,
+      "late": 90
+    },
+    "core_carry_traits": ["瑟庄妮"],
+    "win_condition": "通过控制链给主C创造输出窗口，提升后期容错。",
+    "weakness": "控制单位质量低时收益不稳定。"
+  }
+}
